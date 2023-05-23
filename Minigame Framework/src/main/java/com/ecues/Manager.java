@@ -128,6 +128,7 @@ public class Manager extends BukkitRunnable implements Listener {
     }
 
     // We do this because each minigame server instance is its own bukkit/spigot instance
+    // Joins into a lobby world inside the minigame server
     @EventHandler
     public void OnPlayerJoin(PlayerJoinEvent e){
         // TODO
