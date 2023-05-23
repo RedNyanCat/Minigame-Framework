@@ -1,0 +1,4 @@
+name: Minigame Framework
+version: '${project.version}'
+main: com.ecues.MinigameFramework
+api-version: 1.19
