@@ -10,9 +10,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class Channels extends JavaPlugin implements PluginMessageListener {
     private final DataProcessor dataProcessor;
+    private static MinigameFramework framework;
 
     // Constructor
-    public Channels(DataProcessor dataProcessor) {
+    public Channels(MinigameFramework framework, DataProcessor dataProcessor) {
+        this.framework = framework;
         this.dataProcessor = dataProcessor;
     }
 
@@ -23,7 +25,7 @@ public class Channels extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onPluginMessageReceived(String channel, @NotNull Player player, byte[] message) {
-        if (!channel.equals("minigame_framework")) {
+        if (!channel.equals(framework.MINIGAMENAME)) {
             return;
         }
 
@@ -35,7 +37,7 @@ public class Channels extends JavaPlugin implements PluginMessageListener {
     public static void sendData(JavaPlugin plugin, Player player, String data) {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF(data);
-        player.sendPluginMessage(plugin, "minigame_framework", out.toByteArray());
+        player.sendPluginMessage(plugin, framework.MINIGAMENAME, out.toByteArray());
     }
 
 }

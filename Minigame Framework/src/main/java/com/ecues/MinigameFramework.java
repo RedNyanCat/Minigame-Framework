@@ -18,9 +18,9 @@ public final class MinigameFramework extends JavaPlugin implements Channels.Data
         getServer().getPluginManager().registerEvents(new Manager(this), this);
 
         // Create an instance of the Channels class and register it as an incoming plugin channel
-        Channels channels = new Channels(this);
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "minigame_framework");
-        getServer().getMessenger().registerIncomingPluginChannel(this, "minigame_framework", channels);
+        Channels channels = new Channels(this,this);
+        getServer().getMessenger().registerOutgoingPluginChannel(this, MINIGAMENAME);
+        getServer().getMessenger().registerIncomingPluginChannel(this, MINIGAMENAME, channels);
 
     }
 
