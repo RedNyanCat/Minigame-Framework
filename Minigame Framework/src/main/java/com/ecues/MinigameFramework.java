@@ -1,14 +1,26 @@
 package com.ecues;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.entity.Player;
 
-public final class MinigameFramework extends JavaPlugin {
+public final class MinigameFramework extends JavaPlugin implements Channels.DataProcessor {
 
-    public static String MINIGAMENAME;
+    public static String MINIGAMENAME = "TEST";
+
+    @Override
+    public void processData(Player player, String data) {
+        // Process the received data here
+    }
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        getServer().getPluginManager().registerEvents(new Manager(this), this);
+
+        // Create an instance of the Channels class and register it as an incoming plugin channel
+        Channels channels = new Channels(this);
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "minigame_framework");
+        getServer().getMessenger().registerIncomingPluginChannel(this, "minigame_framework", channels);
 
     }
 
