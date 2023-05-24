@@ -77,7 +77,7 @@ public class InventoryGUI implements Listener {
 
     @EventHandler
     public void onInventoryClick(final InventoryDragEvent e){
-        if(e.getInventory().equals(inv)){
+        if(e.getInventory().equals(this.inventory)){
             e.setCancelled(true);
         }
     }
