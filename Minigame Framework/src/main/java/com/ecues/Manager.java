@@ -1,22 +1,16 @@
 package com.ecues;
 
-import com.ecues.events.GameCancelledEvent;
-import com.ecues.events.GameStartEvent;
-import com.ecues.events.GameStartingEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
+import com.ecues.events.*;
+import org.bukkit.*;
 import org.bukkit.configuration.*;
 import org.bukkit.configuration.file.*;
 
 import java.io.*;
 import java.util.*;
 
-import com.ecues.helpers.States;
-import com.ecues.helpers.Kit;
+import com.ecues.helpers.*;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -123,7 +117,7 @@ public class Manager extends BukkitRunnable implements Listener {
         }
         // Force move back to lobby server if enabled
         if (!spectatingEnabled){
-            // TODO
+            // TODO move to lobby server/kick from minigame server
         }
     }
 
@@ -140,7 +134,7 @@ public class Manager extends BukkitRunnable implements Listener {
     public void run(){
 
         // Start the game
-        if (this.time == 0){
+        if (this.time == 0) {
             // Cancel the runnable
             cancel();
             // Start the game and notify all dependencies that the game is starting
